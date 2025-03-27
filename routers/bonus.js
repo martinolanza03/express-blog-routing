@@ -8,12 +8,13 @@ bonus.get('/', (req, res) => {
 });
 
 //show display element with id
-bonus.get('/:slug', (req, res, next) => {
+bonus.get('/:slug', (req, res) => {
     const requestSlug = req.params.slug;
-    const resultSearch = foodPosts.find((element) => element.slug === requestSlug);
+    let resultSearch = foodPosts.find((element) => element.slug === requestSlug);
 
     if (!resultSearch) {
         res.status(404).send(`Nome dello slug sbagliato: ${requestSlug}`);
+        return;
     }
 
     res.json(resultSearch);
