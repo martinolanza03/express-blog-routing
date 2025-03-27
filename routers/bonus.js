@@ -9,7 +9,7 @@ bonus.get('/', (req, res) => {
 
 //show display element with id
 bonus.get('/:slug', (req, res) => {
-    requestSlug = req.params.slug
+    const requestSlug = req.params.slug;
     const resultSearch = foodPosts.find((element) => element.slug === requestSlug);
     res.json(resultSearch);
 });
