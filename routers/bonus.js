@@ -8,9 +8,16 @@ bonus.get('/', (req, res) => {
 });
 
 //show display element with id
-bonus.get('/:slug', (req, res) => {
+bonus.get('/:slug', (req, res, next) => {
     const requestSlug = req.params.slug;
     const resultSearch = foodPosts.find((element) => element.slug === requestSlug);
+
+    if (!resultSearch) {
+        const error = new Error(`Nome dello slug sbagliato: ${requestSlug}`);
+        error.status = 404;
+        return next(error);
+    }
+
     res.json(resultSearch);
 });
 
