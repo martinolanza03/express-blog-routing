@@ -8,9 +8,10 @@ bonus.get('/', (req, res) => {
 });
 
 //show display element with id
-bonus.get('/:id', (req, res) => {
-    requestId = req.params.id - 1;
-    res.json(foodPosts[requestId]);
+bonus.get('/:slug', (req, res) => {
+    requestSlug = req.params.slug
+    const resultSearch = foodPosts.find((element) => element.slug === requestSlug);
+    res.json(resultSearch);
 });
 
 module.exports = bonus;
