@@ -13,9 +13,7 @@ bonus.get('/:slug', (req, res, next) => {
     const resultSearch = foodPosts.find((element) => element.slug === requestSlug);
 
     if (!resultSearch) {
-        const error = new Error(`Nome dello slug sbagliato: ${requestSlug}`);
-        error.status = 404;
-        return next(error);
+        res.status(404).send(`Nome dello slug sbagliato: ${requestSlug}`);
     }
 
     res.json(resultSearch);
