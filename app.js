@@ -11,5 +11,5 @@ app.use('/posts', postsRouter);
 
 //Server port
 app.listen(port, () => {
-    console.log('Server avviato');
+    console.log(`Server avviato nella porta ${port}`);
 });
